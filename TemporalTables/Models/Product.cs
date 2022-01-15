@@ -12,7 +12,7 @@ namespace TemporalTables.Models
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Color { get; set; }
-
+        
         public Product(string name, decimal price, string color)
         {
             Name = name;
