@@ -10,7 +10,12 @@ namespace Migrations
 {
     public class IdentityDbContext : DbContext
     {
+        public IdentityDbContext(DbContextOptions options) : base(options)
+        {
+        }
+
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,11 +33,13 @@ namespace Migrations
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
-
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            base.OnConfiguring(optionsBuilder);
+            modelBuilder.Entity<ApplicationUser>().ToTable("ApplicationUsers", t => t.ExcludeFromMigrations());
         }
+
+
+
+
     }
 }

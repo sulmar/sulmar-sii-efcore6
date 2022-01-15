@@ -12,10 +12,16 @@ namespace Migrations.Models
     }
 
    
-
-    public class ApplicationUser
+    public class IdentityUser
     {
+        public string Id { get; set; }
         public string Login { get; set; }
         public string Password { get; set; }
     }
+
+    public class ApplicationUser : IdentityUser
+    {
+        public string AccountNumber { get; set; }
+    }
+    
 }
