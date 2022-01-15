@@ -1,18 +1,63 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.EntityFrameworkCore;
+using RelatedData;
 using RelatedData.Fakers;
 using RelatedData.Models;
 
 Console.WriteLine("Hello, Related Data!");
 
-var customers = GenerateBlogs();
 
-Display(customers);
 
-// TODO: save blogs to database
 
-// TODO: Eager loading 
+string connectionString = @"Server=(localdb)\mssqllocaldb;Database=BlogsDb";
+
+// Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+var options = new DbContextOptionsBuilder<BlogContext>()
+    .UseSqlServer(connectionString)
+    .Options;
+
+using var context = new BlogContext(options);
+
+//if (!context.Blogs.Any())
+//{
+// var blogs = GenerateBlogs();
+//    context.Database.EnsureDeleted();
+//    context.Database.EnsureCreated();
+
+//    context.Blogs.AddRange(blogs);
+//    context.SaveChanges();
+//}
+
+// Eager loading (zachłanne pobieranie danych)
+//var allBlogs = context.Blogs
+//    .Include(b=>b.Owner)
+//    .Include(p=>p.Posts.Where(p=>p.Rating > 3))
+//        .ThenInclude(p=>p.Author)
+//    .ToList();
+
+//Display(allBlogs);
 
 // TODO: Explicit Loading
+
+var blogs2 = context.Blogs.ToList();
+
+foreach (var blog in blogs2)
+{
+    Console.WriteLine(blog.Title);
+
+    context.Entry(blog).Reference(p => p.Owner).Load();
+    Console.WriteLine(blog.Owner.FirstName);
+
+    context.Entry(blog).Collection(p => p.Posts).Load();
+
+    foreach (var post in blog.Posts)
+    {
+        context.Entry(post).Reference(p => p.Author).Load();
+
+        Console.WriteLine(post);
+    }    
+}
 
 // TODO: Lazy loading
 
