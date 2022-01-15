@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore.Infrastructure;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,10 +14,37 @@ namespace RelatedData.Models
 
     public class Blog : BaseEntity
     {
+        public Blog()
+        {
+
+        }
+
+        private ILazyLoader lazyLoader;
+
+        private Blog(ILazyLoader lazyLoader)
+        {
+            this.lazyLoader = lazyLoader;
+        }
+
         public int Id { get; set; }
         public string Title { get; set; }
-        public Person Owner { get; set; }
-        public ICollection<Post> Posts { get; set; }
+
+        private Person owner;
+
+        public Person Owner
+        {
+            get => lazyLoader.Load(this, ref owner);
+            set => owner = value;
+        }
+
+        // public ICollection<Post> Posts { get; set; }
+
+        private ICollection<Post> posts;
+        public ICollection<Post> Posts
+        {
+            get => lazyLoader.Load(this, ref posts);
+            set => posts = value;
+        }
     }
 
     public class Person : BaseEntity

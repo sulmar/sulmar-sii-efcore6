@@ -13,8 +13,10 @@ string connectionString = @"Server=(localdb)\mssqllocaldb;Database=BlogsDb";
 
 // Install-Package Microsoft.EntityFrameworkCore.SqlServer
 
+// Install-Package Microsoft.EntityFrameworkCore.Proxies
 var options = new DbContextOptionsBuilder<BlogContext>()
     .UseSqlServer(connectionString)
+  //  .UseLazyLoadingProxies()
     .Options;
 
 using var context = new BlogContext(options);
@@ -38,32 +40,43 @@ using var context = new BlogContext(options);
 
 //Display(allBlogs);
 
-// TODO: Explicit Loading
+// Explicit Loading (jawne pobieranie danych)
 
 var blogs2 = context.Blogs.ToList();
+
+//foreach (var blog in blogs2)
+//{
+//    Console.WriteLine(blog.Title);
+
+//    context.Entry(blog).Reference(p => p.Owner).Load();
+//    Console.WriteLine(blog.Owner.FirstName);
+
+//    context.Entry(blog).Collection(p => p.Posts).Load();
+
+//    foreach (var post in blog.Posts)
+//    {
+//        context.Entry(post).Reference(p => p.Author).Load();
+
+//        Console.WriteLine(post);
+//    }    
+//}
+
+// Lazy loading - z użyciem Proxy
+// Lazy loading - z użyciem LazyLoader
+
+var blogs3 = context.Blogs.ToList();
 
 foreach (var blog in blogs2)
 {
     Console.WriteLine(blog.Title);
 
-    context.Entry(blog).Reference(p => p.Owner).Load();
     Console.WriteLine(blog.Owner.FirstName);
-
-    context.Entry(blog).Collection(p => p.Posts).Load();
 
     foreach (var post in blog.Posts)
     {
-        context.Entry(post).Reference(p => p.Author).Load();
-
         Console.WriteLine(post);
-    }    
+    }
 }
-
-// TODO: Lazy loading
-
-
-
-
 
 static IEnumerable<Blog> GenerateBlogs()
 {
