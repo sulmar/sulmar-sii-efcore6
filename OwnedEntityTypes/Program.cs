@@ -1,4 +1,6 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Microsoft.EntityFrameworkCore;
+using OwnedEntityTypes;
 using OwnedEntityTypes.Models;
 
 Console.WriteLine("Hello, Owned Entity Types!");
@@ -7,14 +9,31 @@ var customers = GenerateCustomers();
 
 Display(customers);
 
+string connectionString = @"Server=(localdb)\mssqllocaldb;Database=AddressDb";
+
+// Install-Package Microsoft.EntityFrameworkCore.SqlServer
+
+// Install-Package Microsoft.EntityFrameworkCore.Proxies
+var options = new DbContextOptionsBuilder<AddressContext>()
+    .UseSqlServer(connectionString)
+    .Options;
+
+
+using var context = new AddressContext(options);
+
+context.Database.EnsureDeleted();
+context.Database.EnsureCreated();   
+
 // TODO: save customers to database
+context.Customers.AddRange(customers);
+context.SaveChanges();
 
 // TODO: get customers from database
+var customersDb = context.Customers.ToList();
 
-
-static void Display(IEnumerable<Customer> customers)
+static void Display(IEnumerable<Customer> customersDb)
 {
-    foreach (var customer in customers)
+    foreach (var customer in customersDb)
     {
         Console.WriteLine(customer);
     }
@@ -36,6 +55,8 @@ static IEnumerable<Customer> GenerateCustomers()
                 ZipCode = "01-001"
             },
 
+            Location = new Coordinate(52.05, 25.04),
+
             ShipAddress = new Address
             {
                 City = "Warsaw",
@@ -49,7 +70,9 @@ static IEnumerable<Customer> GenerateCustomers()
         {
             FirstName = "Jack",
             LastName = "London",
-            
+
+           // Location = new Coordinate(51.95, 24.14),
+
             InvoiceAddress = new Address
             {
                 City = "Bydgoszcz",

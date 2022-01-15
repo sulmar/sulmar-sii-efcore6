@@ -22,4 +22,19 @@ namespace TableSplitting.Models
         public override string ToString() => $"{Title} {Description} {FileName} {ContentType} {Content.Length}";
 
     }
+
+    public class AttachmentHeader : BaseEntity
+    {
+        public string Title { get; set; }
+        public string Description { get; set; }
+        public string FileName { get; set; }
+        public AttachmentContent Content { get; set; }
+    }
+
+    public class AttachmentContent : BaseEntity
+    {
+        public string FileName { get; set; }
+        public string ContentType { get; set; }
+        public byte[] Content { get; set; }
+    }
 }
