@@ -23,6 +23,22 @@ namespace Migrations
         }
     }
 
+    public class ExtendedIdentityDbContext : IdentityDbContext
+    {
+        public DbSet<ExtendedApplicationUser> ExtendedApplicationUsers { get; set; }
+
+        public ExtendedIdentityDbContext(DbContextOptions options) : base(options)
+        {
+        }        
+    }
+
+    public class ExtendedApplicationUser
+    {
+        public int Id { get; set; }
+        public ApplicationUser User { get; set; }
+        public string Email { get; set; }
+    }
+
 
     public class CustomersContext : DbContext
     {
