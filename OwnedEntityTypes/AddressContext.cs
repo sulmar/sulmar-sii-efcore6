@@ -20,10 +20,13 @@ namespace OwnedEntityTypes
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Customer>()
-                .OwnsOne(p => p.ShipAddress);
+                .OwnsOne(p => p.InvoiceAddress);
 
             modelBuilder.Entity<Customer>()
-                .OwnsOne(p => p.InvoiceAddress);
+                .OwnsOne(p => p.ShipAddress, address =>
+                {
+                    address.Ignore(p => p.Country);
+                });
 
             modelBuilder.Entity<Customer>()
                 .OwnsOne(p => p.Location);
