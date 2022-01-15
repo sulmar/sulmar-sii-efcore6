@@ -3,39 +3,41 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conversions", "Conversions\Conversions.csproj", "{96C12635-A145-4104-B39C-D4D284D82A53}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conversions", "Conversions\Conversions.csproj", "{96C12635-A145-4104-B39C-D4D284D82A53}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OwnedEntityTypes", "OwnedEntityTypes\OwnedEntityTypes.csproj", "{A6F4B805-FD8E-4D15-AF48-4E9F68EBBA8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OwnedEntityTypes", "OwnedEntityTypes\OwnedEntityTypes.csproj", "{A6F4B805-FD8E-4D15-AF48-4E9F68EBBA8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RelatedData", "RelatedData\RelatedData.csproj", "{D80534B8-3698-4878-9DB5-A34E1AC9EC3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RelatedData", "RelatedData\RelatedData.csproj", "{D80534B8-3698-4878-9DB5-A34E1AC9EC3F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConcurrencyManagement", "ConcurrencyManagement\ConcurrencyManagement.csproj", "{70D7E867-8C13-4ED7-B9FB-CD5B54338A02}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConcurrencyManagement", "ConcurrencyManagement\ConcurrencyManagement.csproj", "{70D7E867-8C13-4ED7-B9FB-CD5B54338A02}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TableSplitting", "TableSplitting\TableSplitting.csproj", "{64812BE2-A6FB-42DB-848E-5068D0A8093C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TableSplitting", "TableSplitting\TableSplitting.csproj", "{64812BE2-A6FB-42DB-848E-5068D0A8093C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedTypes", "SharedTypes\SharedTypes.csproj", "{FE25A78F-8F70-4720-9705-4407A8D2735A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharedTypes", "SharedTypes\SharedTypes.csproj", "{FE25A78F-8F70-4720-9705-4407A8D2735A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Transactions", "Transactions\Transactions.csproj", "{32E6454D-4591-4DF3-B373-E78CE0280362}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Transactions", "Transactions\Transactions.csproj", "{32E6454D-4591-4DF3-B373-E78CE0280362}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemporalTables", "TemporalTables\TemporalTables.csproj", "{23B75940-2EA2-46F6-B239-56407BE871A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TemporalTables", "TemporalTables\TemporalTables.csproj", "{23B75940-2EA2-46F6-B239-56407BE871A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GlobalFilters", "GlobalFilters\GlobalFilters.csproj", "{B7025CFB-68BB-4751-A17D-66698A1A3DAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "GlobalFilters", "GlobalFilters\GlobalFilters.csproj", "{B7025CFB-68BB-4751-A17D-66698A1A3DAA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ComputedColumnSql", "ComputedColumnSql\ComputedColumnSql.csproj", "{8D1FDB7C-02AB-4D84-811F-537E79BB02A8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ComputedColumnSql", "ComputedColumnSql\ComputedColumnSql.csproj", "{8D1FDB7C-02AB-4D84-811F-537E79BB02A8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Indexes", "Indexes\Indexes.csproj", "{8CA6BD4C-103E-4751-B2F3-E94030DA278C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Indexes", "Indexes\Indexes.csproj", "{8CA6BD4C-103E-4751-B2F3-E94030DA278C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inheritance", "Inheritance\Inheritance.csproj", "{7F665D31-E2DB-4083-B350-3B9385E49826}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Inheritance", "Inheritance\Inheritance.csproj", "{7F665D31-E2DB-4083-B350-3B9385E49826}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tracking", "Tracking\Tracking.csproj", "{F6264FC6-E599-4556-849E-61BE7C8511FF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Tracking", "Tracking\Tracking.csproj", "{F6264FC6-E599-4556-849E-61BE7C8511FF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Migrations", "Migrations\Migrations.csproj", "{A36D75B8-6586-4115-9909-A017AA22BEB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Migrations", "Migrations\Migrations.csproj", "{A36D75B8-6586-4115-9909-A017AA22BEB6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RawSql", "RawSql\RawSql.csproj", "{E50AC27A-63D1-4CDE-841B-AD22ACB825A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RawSql", "RawSql\RawSql.csproj", "{E50AC27A-63D1-4CDE-841B-AD22ACB825A6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SpatialTypes", "SpatialTypes\SpatialTypes.csproj", "{A7D5B6E4-88EA-4914-AB8D-83148B207D91}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SpatialTypes", "SpatialTypes\SpatialTypes.csproj", "{A7D5B6E4-88EA-4914-AB8D-83148B207D91}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeFirst", "CodeFirst\CodeFirst.csproj", "{3EE2069B-F05D-477F-88CB-C320C79A51E2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFirst", "CodeFirst\CodeFirst.csproj", "{3EE2069B-F05D-477F-88CB-C320C79A51E2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Conventions", "Conventions\Conventions.csproj", "{A7BBEF34-B8ED-4FFD-9647-D4D74075354A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,10 @@ Global
 		{3EE2069B-F05D-477F-88CB-C320C79A51E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3EE2069B-F05D-477F-88CB-C320C79A51E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3EE2069B-F05D-477F-88CB-C320C79A51E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A7BBEF34-B8ED-4FFD-9647-D4D74075354A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A7BBEF34-B8ED-4FFD-9647-D4D74075354A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A7BBEF34-B8ED-4FFD-9647-D4D74075354A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A7BBEF34-B8ED-4FFD-9647-D4D74075354A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
