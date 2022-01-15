@@ -19,32 +19,33 @@ namespace RelatedData.Models
 
         }
 
-        private ILazyLoader lazyLoader;
+        //private ILazyLoader lazyLoader;
 
-        private Blog(ILazyLoader lazyLoader)
-        {
-            this.lazyLoader = lazyLoader;
-        }
+        //private Blog(ILazyLoader lazyLoader)
+        //{
+        //    this.lazyLoader = lazyLoader;
+        //}
 
         public int Id { get; set; }
         public string Title { get; set; }
 
-        private Person owner;
+        public Person Owner  { get; set; }
+        //private Person owner;
 
-        public Person Owner
-        {
-            get => lazyLoader.Load(this, ref owner);
-            set => owner = value;
-        }
+        //public Person Owner
+        //{
+        //    get => lazyLoader.Load(this, ref owner);
+        //    set => owner = value;
+        //}
 
-        // public ICollection<Post> Posts { get; set; }
+        public ICollection<Post> Posts { get; set; }
 
-        private ICollection<Post> posts;
-        public ICollection<Post> Posts
-        {
-            get => lazyLoader.Load(this, ref posts);
-            set => posts = value;
-        }
+        //private ICollection<Post> posts;
+        //public ICollection<Post> Posts
+        //{
+        //    get => lazyLoader.Load(this, ref posts);
+        //    set => posts = value;
+        //}
     }
 
     public class Person : BaseEntity
@@ -63,5 +64,23 @@ namespace RelatedData.Models
 
         public override string ToString() => $"[{Slug}] {new string('*', Rating)} \n {Content} \n";
 
+    }
+
+    public class IdentityUser
+    {
+
+    }
+
+    public class ApplicationUser : IdentityUser
+    {
+        public string AccountNumber { get; set; }
+        public ICollection<Tenant> Tenants { get; set; }
+    }
+
+    public class Tenant
+    {
+        public Guid Id { get; set; }
+        public string Name { get; set; }
+        public ICollection<ApplicationUser> Users { get; set; }
     }
 }

@@ -42,7 +42,11 @@ using var context = new BlogContext(options);
 
 // Explicit Loading (jawne pobieranie danych)
 
+var blogHeaders = context.Blogs.IgnoreAutoIncludes().ToList();
+
 var blogs2 = context.Blogs.ToList();
+
+
 
 //foreach (var blog in blogs2)
 //{

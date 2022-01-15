@@ -17,6 +17,16 @@ namespace RelatedData
         public DbSet<Blog> Blogs { get; set; }
 
 
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Blog>()
+                .Navigation(p => p.Owner).AutoInclude();
+
+            modelBuilder.Entity<Blog>()
+                .Navigation(p => p.Posts).AutoInclude();
+
+        }
+
 
 
     }
