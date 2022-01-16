@@ -21,7 +21,9 @@ namespace Conversions.Models
 
         public bool CanSend { get; set; }
 
-        public override string ToString() => $"{FirstName} {LastName} {MembershipType} {Location} {Profile} {DateOfBirth} {WakeupHour}";
+        // public override string ToString() => $"{FirstName} {LastName} {MembershipType} {Location} {Profile} {DateOfBirth} {WakeupHour}";
+
+        public override string ToString() => $"{FirstName} {LastName} {MembershipType} {Location} {Profile}";
     }
 
     public class Profile
