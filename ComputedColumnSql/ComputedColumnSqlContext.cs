@@ -1,6 +1,7 @@
 ﻿using ComputedColumnSql.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ComputedColumnSql
 {
@@ -14,25 +15,34 @@ namespace ComputedColumnSql
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
-                .Property(p => p.FullName)
-                .HasComputedColumnSql("FirstName + ' ' + LastName");
+            modelBuilder.ApplyConfiguration(new CustomerConfigurarion());
+        }
+
+    }
+
+    public class CustomerConfigurarion : IEntityTypeConfiguration<Customer>
+    {
+        public void Configure(EntityTypeBuilder<Customer> builder)
+        {
+            builder
+               .Property(p => p.FullName)
+               .HasComputedColumnSql("FirstName + ' ' + LastName");
 
             // Domyślna wartość
-            modelBuilder.Entity<Customer>()
+            builder
                 .Property(p => p.Balance)
                 .HasDefaultValue(1000m);
 
             // Domyślna wartość pola na podstawie funkcji
-            modelBuilder.Entity<Customer>()
+            builder
                 .Property(p => p.CreatedOn)
                 .HasDefaultValueSql("GETUTCDATE()");
 
             // Wartość na podstawie triggera
-            modelBuilder.Entity<Customer>().Property(p => p.ModifiedOn)
+            builder
+                .Property(p => p.ModifiedOn)
                 .ValueGeneratedOnUpdate()
                 .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save);
         }
-
     }
 }
