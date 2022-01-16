@@ -18,6 +18,7 @@ namespace Conversions.Models
 
         public DateOnly DateOfBirth { get; set; }
         public TimeOnly WakeupHour { get; set; }
+        public DateOnly LastVisit { get; set; }
 
         public bool CanSend { get; set; }
 
