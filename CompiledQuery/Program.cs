@@ -42,4 +42,7 @@ Console.WriteLine(foundVehicle2);
 // dotnet ef dbcontext optimize
 // https://docs.microsoft.com/pl-pl/ef/core/cli/dotnet#dotnet-ef-dbcontext-optimize
 
+// How Entity Framework translates LINQ all the way to SQL - Dotnetos Conference 2019
+https://www.youtube.com/watch?v=r69ZxXgOIK4
+
 
