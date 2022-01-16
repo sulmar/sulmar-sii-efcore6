@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tracking.Models
+namespace ChangeTracking.Models
 {
     public abstract class BaseEntity
     {
@@ -21,5 +21,6 @@ namespace Tracking.Models
     {
         public DateTime OrderDate { get; set; }
         public Customer Customer { get; set; }
+        public decimal TotalAmount { get; set; }
     }
 }
