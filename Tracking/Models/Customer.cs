@@ -11,6 +11,8 @@ namespace ChangeTracking.Models
         public int Id { get; set; }
     }
 
+
+    // POCO (Plain Old CLR Object)
     public class Customer : BaseEntity
     {
         public string FirstName { get; set; }

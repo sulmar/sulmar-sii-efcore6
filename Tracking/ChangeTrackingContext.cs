@@ -12,6 +12,12 @@ namespace ChangeTracking
     {
         public ChangeTrackingContext(DbContextOptions options) : base(options)
         {
+            
+        }
+
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.Snapshot);
         }
 
         public DbSet<Customer> Customers { get; set; }

@@ -31,11 +31,143 @@ if (context.Database.EnsureCreated())
 
 // TODO: add customer
 
+//var customer1 = new Customer { FirstName = "John", LastName = "Smith" };
 
-// TODO: update customer
+//Console.WriteLine(context.Entry(customer1).State);
 
+//context.Customers.Add(customer1);
+
+////Console.WriteLine(context.Entry(customer).State);
+
+//context.SaveChanges();
+
+////Console.WriteLine(context.Entry(customer).State);
+
+//// TODO: update customer
+
+//// Utworzenie migawki (snapshot)
+//var customer = context.Customers.First();
+
+//Console.WriteLine(context.Entry(customer).State);
+
+//customer.FirstName = "Jack";
+
+//// context.Entry(customer).State = EntityState.Modified;
+
+//var firstNameProperty = context.Entry(customer).Property(p => p.FirstName);
+//var lastNameProperty = context.Entry(customer).Property(p => p.LastName);
+
+//// lastNameProperty.IsModified = true;
+
+//Console.WriteLine($"{firstNameProperty.OriginalValue} -> {firstNameProperty.CurrentValue} {firstNameProperty.IsModified}");
+//Console.WriteLine($"{lastNameProperty.OriginalValue} -> {lastNameProperty.CurrentValue} {lastNameProperty.IsModified}");
+
+//Console.WriteLine(context.Entry(customer).State);  // -> context.ChangeTracker.DetectChanges();
+
+//if (context.ChangeTracker.HasChanges()) // -> context.ChangeTracker.DetectChanges();
+//{
+
+//}
+
+
+
+//context.SaveChanges(); // -> context.ChangeTracker.DetectChanges();
+
+//Console.WriteLine(context.Entry(customer).State);
 
 // TODO: delete customer
 
+//var customer = context.Customers.First();
+
+//Console.WriteLine(context.Entry(customer).State);
+
+//context.Customers.Remove(customer);
+//Console.WriteLine(context.Entry(customer).State);
+
+//context.SaveChanges();
+
+//Console.WriteLine(context.Entry(customer).State);
+
 
 // TODO: add order
+
+// deserializacja
+
+var product = new Product { Id = 8 };
+var customer = new Customer { Id = 4 };
+
+//var productDb = context.Products.Find(product.Id);
+//var customerDb = context.Customers.Find(customer.Id);
+
+
+var order = new Order
+{
+    Customer = customer,
+    Details = new List<OrderDetail>
+    { 
+        new OrderDetail { Quantity = 5, Amount = 10, Product = product}
+    }
+};
+
+
+// Ręczne sterowanie
+//context.Entry(customer).State = EntityState.Unchanged;
+//context.Entry(product).State = EntityState.Unchanged;
+
+// Automatyczne sterowanie
+context.ChangeTracker.TrackGraph(order, node =>
+{
+    node.Entry.State = EntityState.Unchanged;
+
+    if (!node.Entry.IsKeySet)
+    {
+        node.Entry.State = EntityState.Added;
+    }
+
+    //if (node.Entry is OrderDetail)
+    //{
+    //    context.Entry(node.Entry).Property("Quantity").IsModified = true;
+    //}   
+
+    //if (node.Entry is Product && node.Entry.State == EntityState.Deleted)
+    //{
+    //    Product product = (Product)node.Entry.Entity;
+
+    //    node.Entry.State = EntityState.Unchanged;
+    //    product.IsRemoved = true;
+    //    context.Entry<Product>(product).Property(p=>p.IsRemoved).IsModified = true;
+        
+    //}
+
+    // https://docs.microsoft.com/pl-pl/ef/core/saving/disconnected-entities
+});
+
+
+
+context.Orders.Add(order);
+
+var entries = context.ChangeTracker.Entries().ToList();
+
+foreach (var entity in entries)
+{
+    Console.WriteLine($"{entity.Entity} {entity.State}");
+}
+
+
+Console.WriteLine("ShortView");
+Console.WriteLine(context.ChangeTracker.DebugView.ShortView);
+
+Console.WriteLine("LongView");
+Console.WriteLine(context.ChangeTracker.DebugView.LongView);
+
+
+
+context.SaveChanges();
+
+
+// Remove
+var p = new Product { Id = 10 };
+context.Products.Remove(p);
+context.SaveChanges();
+
+
