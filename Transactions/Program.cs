@@ -1,5 +1,4 @@
-﻿// See https://aka.ms/new-console-template for more information
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Transactions;
 using Transactions.Models;
 
@@ -23,17 +22,42 @@ if (context.Database.EnsureCreated())
 
 // TODO: safe transfer money
 
-decimal amount = 100;
+ControlTransactionTest(context);
 
-var sender = context.Accounts.Single(a => a.AccountNumber == "1111");
-sender.Balance -= amount;
 
-context.SaveChanges();
+static void ControlTransactionTest(TransactionContext context)
+{
+    decimal amount = 100;
 
-var recipient = context.Accounts.Single(a => a.AccountNumber == "2222");
-recipient.Balance += amount;
+    using var transaction = context.Database.BeginTransaction();
+    Console.WriteLine($"Start transaction {transaction.TransactionId}");
 
-context.SaveChanges();
+    try
+    {
+        var sender = context.Accounts.Single(a => a.AccountNumber == "1111");
+        sender.Balance -= amount;
+
+        context.SaveChanges();
+
+        var recipient = context.Accounts.Single(a => a.AccountNumber == "2222");
+        recipient.Balance += amount;
+
+        if (recipient.Balance > Account.BalanceLimit)
+            throw new Exception($"Balance over limit {Account.BalanceLimit:C2}");
+
+        context.SaveChanges();
+
+        transaction.Commit();
+        Console.WriteLine($"Commited transaction {transaction.TransactionId}");
+
+    }
+    catch (Exception ex)
+    {
+        transaction.Rollback();
+        Console.WriteLine($"Rollbacked transaction {transaction.TransactionId}");
+    }
+
+}
 
 
 static void Display(IEnumerable<Account> accounts)
