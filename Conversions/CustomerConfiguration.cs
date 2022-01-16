@@ -23,11 +23,11 @@ namespace Conversions
             builder.Property(p=>p.Location)
                 .HasConversion<GeoHashConverter>();
 
-            builder.Property(p=>p.DateOfBirth)
-                .HasConversion<DateOnlyConverter, DateOnlyComparer>();
+            //builder.Property(p=>p.DateOfBirth)
+            //    .HasConversion<DateOnlyConverter, DateOnlyComparer>();
 
-            builder.Property(p=>p.WakeupHour)
-                .HasConversion<TimeOnlyConverter, TimeOnlyComparer>();
+            //builder.Property(p=>p.WakeupHour)
+            //    .HasConversion<TimeOnlyConverter, TimeOnlyComparer>();
 
             builder.Property(p=>p.CanSend)
                 .HasConversion(new BoolToStringConverter("No", "Yes"));
