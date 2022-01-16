@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore;
 Console.WriteLine("Hello, Change Tracking!");
 
 
-string connectionString = @"Server=(localdb)\mssqllocaldb;Database=PostsDb";
+string connectionString = @"Server=(localdb)\mssqllocaldb;Database=ChangeTrackingDb";
 
 // Install-Package Microsoft.EntityFrameworkCore.SqlServer
 var options = new DbContextOptionsBuilder<ChangeTrackingContext>()
