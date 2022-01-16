@@ -1,6 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
 using Bogus;
 using Interceptors;
+using Interceptors.Incerceptors;
 using Interceptors.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -12,6 +13,8 @@ string connectionString = @"Server=(localdb)\mssqllocaldb;Database=InterceptorsD
 // Install-Package Microsoft.EntityFrameworkCore.SqlServer
 var options = new DbContextOptionsBuilder<InterceptorsContext>()
     .UseSqlServer(connectionString)
+    .AddInterceptors(new ModifyDateSaveChangesInterceptor())
+    .AddInterceptors(new LoggerCommandInterceptor())
     .Options;
 
 using var context = new InterceptorsContext(options);
@@ -26,4 +29,10 @@ if (context.Database.EnsureCreated())
     context.Customers.AddRange(customers);
     context.SaveChanges();
 }
+
+var customer = context.Customers.First();
+
+customer.FirstName = "Anna";
+
+context.SaveChanges();
 
