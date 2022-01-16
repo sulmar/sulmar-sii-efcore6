@@ -45,6 +45,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledQuery", "CompiledQu
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryUpdateMapping", "QueryUpdateMapping\QueryUpdateMapping.csproj", "{13BDE63B-3E38-43FB-9077-5130EE457189}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interceptors", "Interceptors\Interceptors.csproj", "{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -135,6 +137,10 @@ Global
 		{13BDE63B-3E38-43FB-9077-5130EE457189}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{13BDE63B-3E38-43FB-9077-5130EE457189}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{13BDE63B-3E38-43FB-9077-5130EE457189}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
