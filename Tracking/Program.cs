@@ -29,6 +29,12 @@ if (context.Database.EnsureCreated())
 }
 
 
+var product = context.Products.First();
+
+product.Price += 10;
+
+context.SaveChanges();
+
 // TODO: add customer
 
 var customer1 = new Customer { FirstName = "John", LastName = "Smith" };
