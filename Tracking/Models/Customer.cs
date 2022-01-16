@@ -16,11 +16,4 @@ namespace ChangeTracking.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
     }
-
-    public class Order : BaseEntity
-    {
-        public DateTime OrderDate { get; set; }
-        public Customer Customer { get; set; }
-        public decimal TotalAmount { get; set; }
-    }
 }

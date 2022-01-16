@@ -1,5 +1,7 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Bogus;
 using ChangeTracking;
+using ChangeTracking.Models;
 using Microsoft.EntityFrameworkCore;
 
 Console.WriteLine("Hello, Change Tracking!");
@@ -15,7 +17,16 @@ var options = new DbContextOptionsBuilder<ChangeTrackingContext>()
 using var context = new ChangeTrackingContext(options);
 
 
-context.Database.EnsureCreated();
+if (context.Database.EnsureCreated())
+{
+    var products = new Faker<Product>()
+        .RuleFor(p => p.Name, f => f.Commerce.ProductName())
+        .RuleFor(p => p.Price, f => decimal.Parse(f.Commerce.Price()))
+        .Generate(10);
+
+    context.Products.AddRange(products);
+    context.SaveChanges();
+}
 
 
 // TODO: add customer
@@ -25,3 +36,6 @@ context.Database.EnsureCreated();
 
 
 // TODO: delete customer
+
+
+// TODO: add order
