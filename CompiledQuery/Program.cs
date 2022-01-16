@@ -38,6 +38,8 @@ var foundVehicle2 = context.GetVehicleByVIN(vin);
 
 Console.WriteLine(foundVehicle2);
 
-
+// HINT
+// dotnet ef dbcontext optimize
+// https://docs.microsoft.com/pl-pl/ef/core/cli/dotnet#dotnet-ef-dbcontext-optimize
 
 
