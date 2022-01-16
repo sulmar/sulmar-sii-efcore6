@@ -17,7 +17,9 @@ namespace ChangeTracking
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.Snapshot);
+            // modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.Snapshot);
+
+            modelBuilder.HasChangeTrackingStrategy(ChangeTrackingStrategy.ChangedNotifications);
         }
 
         public DbSet<Customer> Customers { get; set; }

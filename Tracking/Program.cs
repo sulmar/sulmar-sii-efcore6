@@ -31,26 +31,28 @@ if (context.Database.EnsureCreated())
 
 // TODO: add customer
 
-//var customer1 = new Customer { FirstName = "John", LastName = "Smith" };
+var customer1 = new Customer { FirstName = "John", LastName = "Smith" };
 
 //Console.WriteLine(context.Entry(customer1).State);
 
-//context.Customers.Add(customer1);
+context.Customers.Add(customer1);
 
 ////Console.WriteLine(context.Entry(customer).State);
 
-//context.SaveChanges();
+context.SaveChanges();
 
 ////Console.WriteLine(context.Entry(customer).State);
 
 //// TODO: update customer
 
 //// Utworzenie migawki (snapshot)
-//var customer = context.Customers.First();
+var customer = context.Customers.First();
 
-//Console.WriteLine(context.Entry(customer).State);
+Console.WriteLine(context.Entry(customer).State);
 
-//customer.FirstName = "Jack";
+customer.FirstName = "Jack";
+
+Console.WriteLine(context.ChangeTracker.DebugView.ShortView);
 
 //// context.Entry(customer).State = EntityState.Modified;
 
@@ -93,21 +95,21 @@ if (context.Database.EnsureCreated())
 
 // deserializacja
 
-var product = new Product { Id = 8 };
-var customer = new Customer { Id = 4 };
+//var product = new Product { Id = 8 };
+//var customer = new Customer { Id = 4 };
 
 //var productDb = context.Products.Find(product.Id);
 //var customerDb = context.Customers.Find(customer.Id);
 
 
-var order = new Order
-{
-    Customer = customer,
-    Details = new List<OrderDetail>
-    { 
-        new OrderDetail { Quantity = 5, Amount = 10, Product = product}
-    }
-};
+//var order = new Order
+//{
+//    Customer = customer,
+//    Details = new List<OrderDetail>
+//    { 
+//        new OrderDetail { Quantity = 5, Amount = 10, Product = product}
+//    }
+//};
 
 
 // Ręczne sterowanie
@@ -115,36 +117,36 @@ var order = new Order
 //context.Entry(product).State = EntityState.Unchanged;
 
 // Automatyczne sterowanie
-context.ChangeTracker.TrackGraph(order, node =>
-{
-    node.Entry.State = EntityState.Unchanged;
+//context.ChangeTracker.TrackGraph(order, node =>
+//{
+//    node.Entry.State = EntityState.Unchanged;
 
-    if (!node.Entry.IsKeySet)
-    {
-        node.Entry.State = EntityState.Added;
-    }
+//    if (!node.Entry.IsKeySet)
+//    {
+//        node.Entry.State = EntityState.Added;
+//    }
 
-    //if (node.Entry is OrderDetail)
-    //{
-    //    context.Entry(node.Entry).Property("Quantity").IsModified = true;
-    //}   
+//    //if (node.Entry is OrderDetail)
+//    //{
+//    //    context.Entry(node.Entry).Property("Quantity").IsModified = true;
+//    //}   
 
-    //if (node.Entry is Product && node.Entry.State == EntityState.Deleted)
-    //{
-    //    Product product = (Product)node.Entry.Entity;
+//    //if (node.Entry is Product && node.Entry.State == EntityState.Deleted)
+//    //{
+//    //    Product product = (Product)node.Entry.Entity;
 
-    //    node.Entry.State = EntityState.Unchanged;
-    //    product.IsRemoved = true;
-    //    context.Entry<Product>(product).Property(p=>p.IsRemoved).IsModified = true;
-        
-    //}
+//    //    node.Entry.State = EntityState.Unchanged;
+//    //    product.IsRemoved = true;
+//    //    context.Entry<Product>(product).Property(p=>p.IsRemoved).IsModified = true;
 
-    // https://docs.microsoft.com/pl-pl/ef/core/saving/disconnected-entities
-});
+//    //}
+
+//    // https://docs.microsoft.com/pl-pl/ef/core/saving/disconnected-entities
+//});
 
 
 
-context.Orders.Add(order);
+//context.Orders.Add(order);
 
 var entries = context.ChangeTracker.Entries().ToList();
 
@@ -170,4 +172,10 @@ var p = new Product { Id = 10 };
 context.Products.Remove(p);
 context.SaveChanges();
 
+// Wyłączenie śledzenia dla wszystkich obiektów
+context.ChangeTracker.QueryTrackingBehavior = QueryTrackingBehavior.NoTrackingWithIdentityResolution;
 
+// Wyłączenie śledzenia dla zbioru obiektów
+// var products = context.Products.AsNoTracking().ToList();
+
+// var products = context.Products.AsNoTrackingWithIdentityResolution().ToList();
