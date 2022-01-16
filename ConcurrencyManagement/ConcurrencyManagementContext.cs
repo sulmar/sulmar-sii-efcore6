@@ -19,16 +19,21 @@ namespace ConcurrencyManagement
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Customer>()
-                .Property(p=>p.Balance)
-                .IsConcurrencyToken();
+            //modelBuilder.Entity<Customer>()
+            //    .Property(p=>p.Balance)
+            //    .IsConcurrencyToken();
+
+            //modelBuilder.Entity<Customer>()
+            //    .Property(p => p.FirstName)
+            //    .IsConcurrencyToken();
+
+            //modelBuilder.Entity<Customer>()
+            //    .Property(p => p.LastName)
+            //    .IsConcurrencyToken();
 
             modelBuilder.Entity<Customer>()
-                .Property(p => p.FirstName)
-                .IsConcurrencyToken();
-
-            modelBuilder.Entity<Customer>()
-                .Property(p => p.LastName)
+                .Property(p => p.Version)
+                .IsRowVersion()
                 .IsConcurrencyToken();
         }
     }
