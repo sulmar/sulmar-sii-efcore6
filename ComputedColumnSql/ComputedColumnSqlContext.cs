@@ -1,10 +1,6 @@
 ﻿using ComputedColumnSql.Models;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace ComputedColumnSql
 {
@@ -22,9 +18,20 @@ namespace ComputedColumnSql
                 .Property(p => p.FullName)
                 .HasComputedColumnSql("FirstName + ' ' + LastName");
 
+            // Domyślna wartość
             modelBuilder.Entity<Customer>()
-                .Property(p => p.Balance)                
-                .ValueGeneratedOnAddOrUpdate();
+                .Property(p => p.Balance)
+                .HasDefaultValue(1000m);
+
+            // Domyślna wartość pola na podstawie funkcji
+            modelBuilder.Entity<Customer>()
+                .Property(p => p.CreatedOn)
+                .HasDefaultValueSql("GETUTCDATE()");
+
+            // Wartość na podstawie triggera
+            modelBuilder.Entity<Customer>().Property(p => p.ModifiedOn)
+                .ValueGeneratedOnUpdate()
+                .Metadata.SetAfterSaveBehavior(PropertySaveBehavior.Save);
         }
 
     }

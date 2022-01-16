@@ -12,11 +12,16 @@ namespace ComputedColumnSql.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
 
-        public string FullName { get; set; }
-
-        public decimal Balance { get; set; } // na podst. triggera
-
         // public string FullName => $"{FirstName} {LastName}";
+        public string FullName { get; set; } // ustawiane na podst. pola wyliczanego
+        
+        public decimal Balance { get; set; }    // ustawiane na podst. wartości domyślnej
+
+        public DateTime CreatedOn { get; set; } // ustawiane na podst. funkcji SQL
+
+        public DateTime ModifiedOn { get; set; } // ustawiane na podst. triggera
+
+        
 
     }
 }

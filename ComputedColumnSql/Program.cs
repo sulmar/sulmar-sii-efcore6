@@ -14,19 +14,45 @@ var options = new DbContextOptionsBuilder<ComputedColumnSqlContext>()
 
 using var context = new ComputedColumnSqlContext(options);
 
-var customer = new Customer { FirstName = "John", LastName = "Smith" };
+
 
 if (context.Database.EnsureCreated())
 {
-    context.Customers.Add(customer);
+    
+    context.Database.ExecuteSqlRaw(@"
+            CREATE TRIGGER [dbo].[Customer_UPDATE] ON [dbo].[Customers]
+                AFTER UPDATE
+            AS
+            BEGIN
+                SET NOCOUNT ON;
+
+                IF ((SELECT TRIGGER_NESTLEVEL()) > 1) RETURN;
+
+                DECLARE @Id INT
+
+                SELECT @Id = INSERTED.Id
+                FROM INSERTED
+
+                UPDATE dbo.Customers
+                SET ModifiedOn = GETUTCDATE()
+                WHERE Id = @Id
+            END
+");
+
+    context.Customers.Add(new Customer { FirstName = "John", LastName = "Smith" });
     context.SaveChanges();
 }
 
-customer.FirstName = "Jack";
+var customer = context.Customers.Find(1);
 
-Console.WriteLine(customer.FullName);
+Console.WriteLine(customer);
+
+customer.FirstName = "John";
+customer.Balance += 100;
 
 context.SaveChanges();
+
+Console.WriteLine(customer);
 
 
 
