@@ -9,7 +9,6 @@ using System.Threading.Tasks;
 namespace Interceptors.Incerceptors
 {
 
-
     internal class ModifyDateSaveChangesInterceptor : SaveChangesInterceptor
     {
         public override InterceptionResult<int> SavingChanges(DbContextEventData eventData, InterceptionResult<int> result)
