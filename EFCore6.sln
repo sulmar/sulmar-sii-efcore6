@@ -39,17 +39,19 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeFirst", "CodeFirst\Code
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Conventions", "Conventions\Conventions.csproj", "{A7BBEF34-B8ED-4FFD-9647-D4D74075354A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UserDefinedFunctionMapping", "UserDefinedFunctionMapping\UserDefinedFunctionMapping.csproj", "{BCA6C28A-0106-4D24-93A4-03EBCBE93D40}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "UserDefinedFunctionMapping", "UserDefinedFunctionMapping\UserDefinedFunctionMapping.csproj", "{BCA6C28A-0106-4D24-93A4-03EBCBE93D40}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledQuery", "CompiledQuery\CompiledQuery.csproj", "{486A233A-3EBE-4756-A907-2F7D6EC884D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompiledQuery", "CompiledQuery\CompiledQuery.csproj", "{486A233A-3EBE-4756-A907-2F7D6EC884D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QueryUpdateMapping", "QueryUpdateMapping\QueryUpdateMapping.csproj", "{13BDE63B-3E38-43FB-9077-5130EE457189}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "QueryUpdateMapping", "QueryUpdateMapping\QueryUpdateMapping.csproj", "{13BDE63B-3E38-43FB-9077-5130EE457189}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Interceptors", "Interceptors\Interceptors.csproj", "{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Interceptors", "Interceptors\Interceptors.csproj", "{8197D4A2-893B-49C1-A28C-84F2FD1A93CB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MappingSqlFunctions", "MappingSqlFunctions\MappingSqlFunctions.csproj", "{ECE71653-1514-4ED2-A911-C42D63641FF3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MappingSqlFunctions", "MappingSqlFunctions\MappingSqlFunctions.csproj", "{ECE71653-1514-4ED2-A911-C42D63641FF3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CompiledModels", "CompiledModels\CompiledModels.csproj", "{8F45611F-A8B8-490D-B5E8-03869BD7BC33}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CompiledModels", "CompiledModels\CompiledModels.csproj", "{8F45611F-A8B8-490D-B5E8-03869BD7BC33}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MinimalApi", "MinimalApi\MinimalApi.csproj", "{13FDAA71-120E-4EA4-B349-FD59135FBCDB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -153,6 +155,10 @@ Global
 		{8F45611F-A8B8-490D-B5E8-03869BD7BC33}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F45611F-A8B8-490D-B5E8-03869BD7BC33}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F45611F-A8B8-490D-B5E8-03869BD7BC33}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13FDAA71-120E-4EA4-B349-FD59135FBCDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13FDAA71-120E-4EA4-B349-FD59135FBCDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13FDAA71-120E-4EA4-B349-FD59135FBCDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13FDAA71-120E-4EA4-B349-FD59135FBCDB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
