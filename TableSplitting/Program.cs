@@ -66,7 +66,7 @@ static IEnumerable<Attachment> GenerateAttachments()
             Title = "Hello World!",
             Description = "Lorem ipsum",
             FileName = Path.GetFileName(@"Assets\hello-world.pdf"),
-            Content = File.ReadAllBytes(@"Assets\hello-world.pdf")
+            
         },
 
         new Attachment { ContentType = "image/png",
